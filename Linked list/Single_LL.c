@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct node
-{
+struct node{
     int data;
     struct node *link;
 };
@@ -12,20 +11,17 @@ void create(){
     int i, x;
     printf("How Many Elements You want to add: ");
     scanf("%d", &x);
-    for (i = 1; i <= x; i++)
-    {
+    for (i = 1; i <= x; i++){
         struct node *newNode = (struct node *)malloc(sizeof(struct node));
         struct node *temp = (struct node *)malloc(sizeof(struct node));
         printf("Enter data for node %d of the linked list: ", i);
         scanf("%d", &newNode->data);
         newNode->link = NULL;
 
-        if (head == NULL)
-        {
+        if (head == NULL){
             head = temp = newNode;
         }
-        else
-        {
+        else{
             temp = head;
             while (temp->link != NULL)
             {
@@ -54,8 +50,7 @@ void insertatend(){
     struct node *temp = head;
     ins->data = value;
     ins->link = NULL;
-    while (temp->link != NULL)
-    {
+    while (temp->link != NULL){
         temp = temp->link;
     }
     temp->link = ins;
@@ -70,8 +65,7 @@ void insertAtPos(){
     struct node *ptr = (struct node *)malloc(sizeof(struct node));
     struct node *temp = head;
     ptr->data = x;
-    while (i < pos - 1)
-    {
+    while (i < pos - 1){
         temp = temp->link;
         i++;
     }
@@ -89,8 +83,7 @@ void insert_before(){
     printf("Enter the value before which the data has to be inserted:");
     scanf("%d", &c);
     ptr = head;
-    while (ptr->data != c)
-    {
+    while (ptr->data != c){
         preptr = ptr;
         ptr = ptr->link;
     }
@@ -109,8 +102,7 @@ void insert_after(){
     scanf("%d", &c);
     ptr = head;
     preptr = ptr;
-    while (preptr->data != c)
-    {
+    while (preptr->data != c){
         preptr = ptr;
         ptr = ptr->link;
     }
@@ -119,12 +111,10 @@ void insert_after(){
 }
 
 void del_at_begin(){
-    if (head == NULL)
-    {
+    if (head == NULL){
         printf("Linked List is Already Empty\n");
     }
-    else
-    {
+    else{
         struct node *del = (struct node *)malloc(sizeof(struct node));
         printf("Delete Element is %d\n", head->data);
         del = head;
@@ -136,22 +126,18 @@ void del_at_begin(){
 void delete_at_end(){
     struct node *del = (struct node *)malloc(sizeof(struct node));
     struct node *temp = (struct node *)malloc(sizeof(struct node));
-    if (head == NULL)
-    {
+    if (head == NULL){
         printf("Linked List is Already Empty\n");
     }
-    else if (head->link == NULL)
-    {
+    else if (head->link == NULL){
         del = head;
         head = NULL;
         free(del);
     }
-    else
-    {
+    else{
         del = head;
         temp = head->link;
-        while (temp->link != NULL)
-        {
+        while (temp->link != NULL){
             del = temp;
             temp = temp->link;
         }
@@ -187,8 +173,7 @@ void delete_after(){
     {
         printf("Linked List is empty\n");
     }
-    else
-    {
+    else{
         ptr = head;
         preptr = ptr;
         while (preptr->data != c)
@@ -208,7 +193,7 @@ void update_element(){
     int element;
     struct node *temp;
     temp = head;
-    printf("\nEnter the element to be updated in the list : ");
+    printf("Enter the element to be updated in the list : ");
     scanf("%d", &element);
     while (temp != NULL)
     {
@@ -238,8 +223,7 @@ void update_at_end(){
     printf("Enter the element to be updated at end: ");
     scanf("%d", &c);
 
-    while (temp->link != NULL)
-    {
+    while (temp->link != NULL){
         temp = temp->link;
     }
     temp->data = c;
@@ -248,8 +232,7 @@ void update_at_end(){
 void display(){
     printf("Displaying Linked List\n");
     struct node *temp = head;
-    while (temp->link != NULL)
-    {
+    while (temp->link != NULL){
         printf("%d ", temp->data);
         temp = temp->link;
     }
@@ -260,14 +243,12 @@ void sort_list(){
     struct node *ptr1, *ptr2;
     int temp;
     ptr1 = head;
-    while (ptr1->link != NULL)
-    {
+    while (ptr1->link != NULL){
         ptr2 = ptr1->link;
         while (ptr2 != NULL)
         {
 
-            if (ptr1->data > ptr2->data)
-            {
+            if (ptr1->data > ptr2->data){
                 temp = ptr1->data;
                 ptr1->data = ptr2->data;
                 ptr2->data = temp;
@@ -286,8 +267,7 @@ void reverse(){
     prevNode = NULL;
     currentNode = head;
     nextNode = head;
-    while (nextNode != NULL)
-    {
+    while (nextNode != NULL){
         nextNode = nextNode->link;
         currentNode->link = prevNode;
         prevNode = currentNode;
@@ -300,8 +280,7 @@ void reverse(){
 void get_length(){
     int count = 0;
     struct node *temp = head;
-    while (temp != NULL)
-    {
+    while (temp != NULL){
         count++;
         temp = temp->link;
     }
@@ -312,16 +291,13 @@ void search(){
     int x, i = 1;
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode = head;
-    if (newNode == NULL)
-    {
+    if (newNode == NULL){
         printf("Linekd List is empty\n");
     }
-    else
-    {
+    else{
         printf("Enter the data you want to search\n");
         scanf("%d", &x);
-        while (newNode->data != x)
-        {
+        while (newNode->data != x){
             newNode = newNode->link;
             i++;
         }
@@ -338,8 +314,7 @@ void Concatenate(){
 
 int main(){
     int opt;
-    while (1)
-    {
+    while (1){
         printf("\nwhich operation do you want to perform?\n");
         printf("1.Create a Linked List\n");
         printf("2.Display\n");
@@ -423,7 +398,7 @@ int main(){
             case 20:
                 exit(0);
             default:
-                printf("Unknown Choice.\n");
+                printf("Invalid Choice.\n");
         }
     }
     return 0;
