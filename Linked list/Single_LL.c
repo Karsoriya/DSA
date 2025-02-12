@@ -362,69 +362,68 @@ int main(){
         printf("19.Concatenate Linked List\n");
         printf("20.Exit\n");
         scanf("%d", &opt);
-
         switch (opt){
-        case 1:
-            create();
-            break;
-        case 2:
-            display();
-            break;
-        case 3:
-            sort_list();
-            break;
-        case 4:
-            insertatbeg();
-            break;
-        case 5:
-            insertatend();
-            break;
-        case 6:
-            insertAtPos();
-            break;
-        case 7:
-            insert_before();
-            break;
-        case 8:
-            insert_after();
-            break;
-        case 9:
-            del_at_begin();
-            break;
-        case 10:
-            delete_at_end();
-            break;
-        case 11:
-            delete_at_pos();
-            break;
-        case 12:
-            delete_after();
-            break;
-        case 13:
-            update_element();
-            break;
-        case 14:
-            update_at_beg();
-            break;
-        case 15:
-            update_at_end();
-            break;
-        case 16:
-            reverse();
-            break;
-        case 17:
-            get_length();
-            break;
-        case 18:
-            search();
-            break;
-        case 19:
-            Concatenate();
-            break;
-        case 20:
-            exit(0);
-        default:
-            printf("Unknown Choice.\n");
+            case 1:
+                create();
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                sort_list();
+                break;
+            case 4:
+                insertatbeg();
+                break;
+            case 5:
+                insertatend();
+                break;
+            case 6:
+                insertAtPos();
+                break;
+            case 7:
+                insert_before();
+                break;
+            case 8:
+                insert_after();
+                break;
+            case 9:
+                del_at_begin();
+                break;
+            case 10:
+                delete_at_end();
+                break;
+            case 11:
+                delete_at_pos();
+                break;
+            case 12:
+                delete_after();
+                break;
+            case 13:
+                update_element();
+                break;
+            case 14:
+                update_at_beg();
+                break;
+            case 15:
+                update_at_end();
+                break;
+            case 16:
+                reverse();
+                break;
+            case 17:
+                get_length();
+                break;
+            case 18:
+                search();
+                break;
+            case 19:
+                Concatenate();
+                break;
+            case 20:
+                exit(0);
+            default:
+                printf("Unknown Choice.\n");
         }
     }
     return 0;
