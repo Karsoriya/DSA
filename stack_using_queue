@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+typedef struct {
+    int arr[MAX];
+    int front, rear;
+} Queue;
+
+// Initialize queue
+void initQueue(Queue *q) {
+    q->front = q->rear = -1;
+}
+
+// Check if queue is empty
+int isEmpty(Queue *q) {
+    return q->front == -1;
+}
+
+// Enqueue
+void enqueue(Queue *q, int x) {
+    if (q->rear == MAX - 1) {
+        printf("Queue Overflow\n");
+        return;
+    }
+    if (isEmpty(q)) q->front = 0;
+    q->arr[++q->rear] = x;
+}
+
+// Dequeue
+int dequeue(Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue Underflow\n");
+        return -1;
+    }
+    int val = q->arr[q->front];
+    if (q->front == q->rear) q->front = q->rear = -1; // Queue becomes empty
+    else q->front++;
+    return val;
+}
+
+// Get size of queue
+int size(Queue *q) {
+    if (isEmpty(q)) return 0;
+    return q->rear - q->front + 1;
+}
+
+// Stack using one queue
+typedef struct {
+    Queue q;
+} Stack;
+
+// Initialize stack
+void initStack(Stack *s) {
+    initQueue(&s->q);
+}
+
+// Push element
+void push(Stack *s, int x) {
+    int n = size(&s->q);
+    enqueue(&s->q, x);
+    // Rotate the previous elements behind the new element
+    for (int i = 0; i < n; i++) {
+        int val = dequeue(&s->q);
+        enqueue(&s->q, val);
+    }
+}
+
+// Pop element
+int pop(Stack *s) {
+    return dequeue(&s->q);
+}
+
+// Top element
+int top(Stack *s) {
+    if (isEmpty(&s->q)) {
+        printf("Stack is empty\n");
+        return -1;
+    }
+    return s->q.arr[s->q.front];
+}
+
+// Check if stack is empty
+int empty(Stack *s) {
+    return isEmpty(&s->q);
+}
+
+// Demo
+int main() {
+    Stack st;
+    initStack(&st);
+
+    push(&st, 10);
+    push(&st, 20);
+    push(&st, 30);
+
+    printf("Top: %d\n", top(&st)); // 30
+    pop(&st);
+    printf("Top after pop: %d\n", top(&st)); // 20
+
+    push(&st, 40);
+    printf("Top after pushing 40: %d\n", top(&st)); // 40
+
+    while (!empty(&st)) {
+        printf("Popping: %d\n", top(&st));
+        pop(&st);
+    }
+
+    return 0;
+}
+
